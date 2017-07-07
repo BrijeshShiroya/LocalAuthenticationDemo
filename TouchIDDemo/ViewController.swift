@@ -78,5 +78,34 @@ class ViewController: UIViewController {
     }
   }
   
+  
+  func savePassword(){
+    func showPasswordAlert() {
+      
+      let alert = UIAlertController(title: "TouchIDDemo", message: "Please type your password", preferredStyle: .alert)
+      
+      //2. Add the text field. You can configure it however you need.
+      alert.addTextField { (textField) in
+        textField.placeholder = "TouchIDDemo"
+        textField.isSecureTextEntry = true
+      }
+      
+      alert.addAction(UIAlertAction.init(title: "Submit", style: .default, handler: { (UIAlertAction  ) in
+        if !(alert.textFields?[0].text?.isEmpty)! {
+          if alert.textFields?[0].text == "1212" {
+            print("passcode is match")
+          }
+          else{
+            showPasswordAlert()
+          }
+        }
+        else{
+          showPasswordAlert()
+        }
+        
+      }))
+    }
+  }
+  
 }
 
